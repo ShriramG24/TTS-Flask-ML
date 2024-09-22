@@ -27,14 +27,14 @@ class TTSConverter:
         if text is None:
             raise ValueError("Input text file not found or could not be read")
         
-        if out_dir is not None:
-            os.makedirs(out_dir)
+        if out_dir is None:
+            out_dir = os.path.dirname(text_file)
         else:
-            out_dir = h.extract_directory(text_file)
+            os.makedirs(out_dir, exist_ok=True)
 
         file_name = h.extract_file_name(text_file)
         print(f"Processing file: {file_name}")
-        return self.write_to_audio_file(text, out_dir + file_name + self.audio_format)
+        return self.write_to_audio_file(text, os.path.join(out_dir, file_name + self.audio_format))
     
     def convert_batch(self, text_files: list[str], out_dir: str=None) -> list[str]:
         if text_files is None or len(text_files) == 0:

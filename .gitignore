@@ -1,4 +1,5 @@
 Pipfile.lock
 __pycache__
+.pytest_cache
 words_100.mp3
 words_9999.mp3

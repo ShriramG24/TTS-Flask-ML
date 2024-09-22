@@ -12,9 +12,6 @@ def extract_text_from_file(file_path: str) -> str:
 def extract_file_name(file_path: str) -> str:
     file_name, _ = os.path.splitext(os.path.basename(file_path))
     return file_name
-
-def extract_directory(file_path: str) -> str:
-    return os.path.dirname(file_path) + "/"
     
 def extract_text_files_from_dir(directory: str) -> list[str]:
     if directory is None or not os.path.isdir(directory):

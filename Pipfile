@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pyttsx3 = "*"
 flask-ml = "*"
+pytest = "*"
 
 [dev-packages]
 
