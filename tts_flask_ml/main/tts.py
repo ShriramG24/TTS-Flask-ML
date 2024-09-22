@@ -11,6 +11,8 @@ class TTSConverter:
         self.engine = engine
         self.audio_format = ".aiff" if platform.system() == "Darwin" else ".mp3"
     
+    def set_audio_format(self, audio_format: str) -> None:
+        self.audio_format = audio_format
 
     def write_to_audio_file(self, text: str, audio_file: str) -> str:
         self.engine.save_to_file(text, audio_file)
