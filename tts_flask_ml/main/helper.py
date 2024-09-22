@@ -14,7 +14,7 @@ def extract_file_name(file_path: str) -> str:
     return file_name
 
 def extract_directory(file_path: str) -> str:
-    return os.path.dirname(file_path)
+    return os.path.dirname(file_path) + "/"
     
 def extract_text_files_from_dir(directory: str) -> list[str]:
     if directory is None or not os.path.isdir(directory):
