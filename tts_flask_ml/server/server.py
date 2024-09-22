@@ -4,7 +4,7 @@ from flask_ml.flask_ml_server import MLServer
 from flask_ml.flask_ml_server.constants import DataTypes
 from flask_ml.flask_ml_server.models import (AudioResult, Response,
                                              ResponseModel)
-from tts_flask_ml.main.tts import TTSConverter
+from tts_flask_ml.main.tts_converter import TTSConverter
 
 tts = TTSConverter()
 server = MLServer(__name__)

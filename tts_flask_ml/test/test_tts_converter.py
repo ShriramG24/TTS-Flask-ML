@@ -1,5 +1,5 @@
 import pytest
-from tts_flask_ml.main.tts import TTSConverter
+from tts_flask_ml.main.tts_converter import TTSConverter
 import os
 
 def test_convert_single_valid_input():
