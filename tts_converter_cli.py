@@ -26,7 +26,7 @@ def main():
         )
 
     converter = TTSConverter()
-    if args.audio_format is not None:
+    if args.audio_format:
         converter.set_audio_format(args.audio_format)
 
     print(args)
