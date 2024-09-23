@@ -1,36 +1,48 @@
 # TTS-Flask-ML
 Converts text files to mp3 audio speech files. Uses pyttsx3 and wrapped by flask-ml.
 
-## Installation Requirements
-### To install pipenv
-
+#### To install pipenv
 ```pip install pipenv```
-### To create your own virtual environment
+#### To create virtual environment
 ```pipenv shell```
 
-### To install the required dependencies, run the following `pip` command:
+### Installing requirements
 
+#### To install using pipenv 
 ```pipenv install```
-###To install dependencies via text files
 
-#### For windows
+#### To install from .txt
+##### For windows 
 
-``` pip install -r requirements-win.txt```
-#### For Mac
-``` pip install -r requirements-mac.txt```
+``` pip install -r requirements-win.txt``` 
+##### For Mac
 
-## Starting the server
+``` pip install -r requirements-mac.txt``` 
+
+### Starting the server
 ```python -m tts_flask_ml.server.server```
 
-## Client example
-```python -m tts_converter_cli```
+### Client example
+##### update the inputs on the file before running
+```python -m flask_client_test```
 
-## Command line tool
+### Command line Interface
 
-### For input directory path
-```python ./tts_converter_cli.py "./demo"```
-### For input file paths
-```python ./tts_converter_cli.py "./demo/words_100.txt"```
+#### For input directory path
+```python ./tts_converter_cli.py -i directorypath```
+Or
+```python ./tts_converter_cli.py --input_dir directorypath```
+
+#### For input files path
+```python ./tts_converter_cli.py -t filepath_1 filepath_2```
+Or
+```python ./tts_converter_cli.py --text_files filepath_1 filepath_2```
+
+### For output directory path
+```python ./tts_converter_cli.py -o output_directorypath``` 
+or 
+```python ./tts_converter_cli.py --output_dir output_directorypath``` 
+not mandatory
 
 
 
