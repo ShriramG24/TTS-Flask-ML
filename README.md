@@ -38,7 +38,7 @@ Or
 Or
 ```python ./tts_converter_cli.py --text_files filepath_1 filepath_2```
 
-### For output directory path
+#### For output directory path
 ```python ./tts_converter_cli.py -o output_directorypath``` 
 or 
 ```python ./tts_converter_cli.py --output_dir output_directorypath``` 
