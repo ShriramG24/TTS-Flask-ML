@@ -57,11 +57,11 @@ update the inputs on the file before running
 
 **For output directory path (Optional)**
 
-```python tts_converter_cli.py -o "demo/out"``` 
+```python tts_converter_cli.py -t "demo/words_1000.txt demo/text.txt -o "demo/out"``` 
 
 *or*
 
-```python tts_converter_cli.py --output_dir "demo/out"``` 
+```python tts_converter_cli.py --text_files "demo/words_1000.txt --output_dir "demo/out"``` 
 
 
 
