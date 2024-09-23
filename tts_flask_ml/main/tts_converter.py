@@ -19,9 +19,6 @@ class TTSConverter:
     def write_to_audio_file(self, text: str, audio_file: str) -> str:
         self.engine.save_to_file(text, audio_file)
         self.engine.runAndWait()
-        print(f"testing endloop,{self.engine.isBusy()}")
-        #self.engine.endLoop()
-        #self.engine.stop()
         print(f"Audio file created: {os.path.basename(audio_file)}")
         return audio_file
 
