@@ -19,6 +19,12 @@ def main():
             "Input must be either path to text file(s) or directory with text files"
         )
 
+    if args.text_files and args.input_dir:
+        print(
+            "The input has both the text file(s) and input directory. Input only one or"
+            + " the other. Ignoring input directory."
+        )
+
     converter = TTSConverter()
     if args.audio_format is not None:
         converter.set_audio_format(args.audio_format)
