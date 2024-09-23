@@ -30,19 +30,19 @@ Converts text files to mp3 audio speech files. Uses pyttsx3 and wrapped by flask
 
 #### For input directory path
 ```python ./tts_converter_cli.py -i directorypath```
-Or
+##### Or
 ```python ./tts_converter_cli.py --input_dir directorypath```
 
 #### For input files path
 ```python ./tts_converter_cli.py -t filepath_1 filepath_2```
-Or
+##### Or
 ```python ./tts_converter_cli.py --text_files filepath_1 filepath_2```
 
-#### For output directory path
+#### For output directory path (not mandatory)
 ```python ./tts_converter_cli.py -o output_directorypath``` 
-or 
+##### or 
 ```python ./tts_converter_cli.py --output_dir output_directorypath``` 
-not mandatory
+
 
 
 
