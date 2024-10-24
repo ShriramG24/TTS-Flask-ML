@@ -1,6 +1,6 @@
 from flask_ml.flask_ml_client import MLClient
 
-TTS_CONVERTER_URL = "http://127.0.0.1:5000/tts_converter"  # The URL of the server
+TTS_CONVERTER_URL = "http://127.0.0.1:5000/tts_converter_files"  # The URL of the server
 client = MLClient(TTS_CONVERTER_URL)  # Create an instance of the MLClient object
 
 ## Update inputs before testing

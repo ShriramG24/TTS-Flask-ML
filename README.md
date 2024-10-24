@@ -47,12 +47,17 @@ python -m flask_client_test
 
 **Convert One or More Text Files**
 ```
-python cli.py tts_converter --input_files tts_flask_ml\test\words_100.txt tts_flask_ml\test\words_9999.txt
+python cli.py tts_converter_files --input_files tts_flask_ml\test\words_100.txt tts_flask_ml\test\words_9999.txt --output_dir ./output
 ```
 
-**Optional - Specify Output Directory and Audio Format**
+**Convert All Text Files in Directory**
 ```
-python cli.py tts_converter --input_files tts_flask_ml\test\words_100.txt tts_flask_ml\test\words_9999.txt --output_dir ./output --audio_format wav
+python cli.py tts_converter_dir --input_dir tts_flask_ml\test --output_dir ./output
+```
+
+**Optional - Specify Audio Format**
+```
+python cli.py tts_converter --input_dir tts_flask_ml\test --output_dir ./output --audio_format wav
 ```
 
 These CLI arguments can be tweaked as follows:

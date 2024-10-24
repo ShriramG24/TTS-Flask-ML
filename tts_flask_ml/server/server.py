@@ -25,19 +25,23 @@ from tts_flask_ml.main.tts_converter import TTSConverter
 tts = TTSConverter()
 server = MLServer(__name__)
 
-class Inputs(TypedDict):
+class FilesInputs(TypedDict):
     input_files: BatchFileInput
+    output_dir: DirectoryInput
+
+class DirectoryInputs(TypedDict):
+    input_dir: DirectoryInput 
     output_dir: DirectoryInput
 
 class Parameters(TypedDict):
     audio_format: str
 
-def create_tts_task_schema() -> TaskSchema:
+def create_tts_task_schema(files_as_input) -> TaskSchema:
     input_schemas = [
         InputSchema(
-            key="input_files",
-            label="Text Files to Convert",
-            input_type=InputType.BATCHFILE,
+            key="input_files" if files_as_input else "input_dir",
+            label="Text Files to Convert" if files_as_input else "Input Directory",
+            input_type=InputType.BATCHFILE if files_as_input else InputType.DIRECTORY,
         ),
         InputSchema(
             key="output_dir",
@@ -64,8 +68,8 @@ def create_tts_task_schema() -> TaskSchema:
         parameters = parameter_schemas
     )
 
-@server.route("/tts_converter", task_schema_func=create_tts_task_schema, short_title="Text-to-Speech Converter")
-def tts_converter(inputs: Inputs, parameters: Parameters) -> ResponseBody:
+@server.route("/tts_converter_files", task_schema_func=lambda: create_tts_task_schema(True), short_title="Text Files to Audio Files Converter")
+def tts_converter_files(inputs: FilesInputs, parameters: Parameters) -> ResponseBody:
     print("Inputs:", inputs)
     print("Parameters:", parameters)
 
@@ -77,6 +81,22 @@ def tts_converter(inputs: Inputs, parameters: Parameters) -> ResponseBody:
     res = [
         FileResponse(path=r, title=os.path.basename(r), file_type=FileType.AUDIO)
         for r in tts.convert_batch(files, output_dir.path)
+    ]
+    return ResponseBody(root=BatchFileResponse(files=res))
+
+@server.route("/tts_converter_dir", task_schema_func=lambda: create_tts_task_schema(False), short_title="Directory of Text Files to Audio Files Converter")
+def tts_converter_dir(inputs: DirectoryInputs, parameters: Parameters) -> ResponseBody:
+    print("Inputs:", inputs)
+    print("Parameters:", parameters)
+
+    input_dir = inputs["input_dir"]
+    output_dir = inputs["output_dir"]
+
+    tts.set_audio_format(parameters["audio_format"])
+
+    res = [
+        FileResponse(path=r, title=os.path.basename(r), file_type=FileType.AUDIO)
+        for r in tts.convert_from_dir(input_dir.path, output_dir.path)
     ]
     return ResponseBody(root=BatchFileResponse(files=res))
 
