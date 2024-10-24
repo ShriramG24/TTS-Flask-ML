@@ -68,7 +68,7 @@ def create_tts_task_schema(files_as_input) -> TaskSchema:
         parameters = parameter_schemas
     )
 
-@server.route("/tts_converter_files", task_schema_func=lambda: create_tts_task_schema(True), short_title="Text Files to Audio Files Converter")
+@server.route("/tts_converter_files", task_schema_func=lambda: create_tts_task_schema(True), short_title="Text Files to Audio Files Converter", order=0)
 def tts_converter_files(inputs: FilesInputs, parameters: Parameters) -> ResponseBody:
     print("Inputs:", inputs)
     print("Parameters:", parameters)
@@ -84,7 +84,7 @@ def tts_converter_files(inputs: FilesInputs, parameters: Parameters) -> Response
     ]
     return ResponseBody(root=BatchFileResponse(files=res))
 
-@server.route("/tts_converter_dir", task_schema_func=lambda: create_tts_task_schema(False), short_title="Directory of Text Files to Audio Files Converter")
+@server.route("/tts_converter_dir", task_schema_func=lambda: create_tts_task_schema(False), short_title="Directory of Text Files to Audio Files Converter", order=1)
 def tts_converter_dir(inputs: DirectoryInputs, parameters: Parameters) -> ResponseBody:
     print("Inputs:", inputs)
     print("Parameters:", parameters)
