@@ -1,6 +1,6 @@
 # TTS-Flask-ML
 
-![Sample CLI Run](image.png)
+![Sample CLI Run](assets/sample_cli_run.png)
 
 Converts text files to audio speech files. Uses pyttsx3 and wrapped by Flask-ML.
 
